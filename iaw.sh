@@ -9,7 +9,7 @@ ORIGEN_DIRECTORY="/home/tom/Descargas/"
 LAMPP_DIRECTORY="/opt/lampp/lampp"
 DIRECTORY="tomas"
 
-
+#esto es para comprobar que el doc de tomas en htdoc 
 if [ -d "$DESTINO_DIRECTORY$DIRECTORY" ]; then
    # si el irectorio exite
    
