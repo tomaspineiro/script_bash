@@ -19,13 +19,13 @@ ip1=$( echo $ip | cut -d'.' -f 1)
 ip2=$( echo $ip | cut -d'.' -f 2)
 ip3=$( echo $ip | cut -d'.' -f 3)
 
-echo ' #### ' >> $ruta
+
 
 function local () {
    
     archivo=$ruta'named.conf.local'
 
-    echo ' #### ' > $archivo
+    echo '' > $archivo
 
     echo 'include "/etc/bind/zones.rfc1918";' >> $archivo
     echo '' >> $archivo
