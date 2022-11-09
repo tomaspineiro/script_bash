@@ -1,0 +1,11 @@
+
+include "/etc/bind/zones.rfc1918";
+
+zone tom.r {
+  type master;
+  file "db.tom.r";
+};
+zone "2.3.4.in-addr.arpa" {
+  type master;
+  file "db.4.3.2";
+};

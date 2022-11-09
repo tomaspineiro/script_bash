@@ -1,0 +1,20 @@
+INFORMATION:
+
+    NAME: confBind.sh
+    AUTOR:Tomas Piñeiro
+    AMEIL: tomaspial95@gmial.com
+    GIT: 
+
+    El objetivo de este software es configuar de manera rapida y sencilla un servidor dns de bind 9.
+
+
+OPCIONES:
+
+    -h, --help  aprece esta ayuda. 
+
+    Si no indicamos niguna opcion, instalara el BIND9. Despues nos pedira el nombre que queremos para el dominio del servidor, la ip, nombre del host
+
+
+
+
+
