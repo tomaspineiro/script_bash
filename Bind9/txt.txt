@@ -1,11 +1,25 @@
-
+ #### 
 include "/etc/bind/zones.rfc1918";
 
 zone tom.r {
   type master;
   file "db.tom.r";
 };
-zone "2.3.4.in-addr.arpa" {
+zone "3.2.1.in-addr.arpa" {
   type master;
-  file "db.4.3.2";
+  file "db.1.2.3";
 };
+ #### 
+$ORIGIN tom.r.
+$TTL 86400 ;
+@ IN SOA dns hostmaster (
+  1; n     21600; n     3600; n  604800; n     21600; n );
+@      IN      NS       dns
+dns      IN      A        1.2.3.4
+ #### 
+$ORIGIN 3.2.1.in-addr.arpa
+$TTL 86400 ;
+@ IN SOA dns hostmaster (
+  1; n     21600; n     3600; n  604800; n     21600; n );
+@     IN   NS      dns.tom.r.
+1      IN      PTR        dns.tom.r.
