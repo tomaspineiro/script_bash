@@ -1,9 +1,9 @@
 
 include "/etc/bind/zones.rfc1918";
 
-zone to.r {
+zone t.t {
   type master;
-  file "db.to.r";
+  file "db.t.t";
 };
 zone "3.2.1.in-addr.arpa" {
   type master;
@@ -13,27 +13,29 @@ zone "3.2.1.in-addr.arpa" {
  #### 
  #### 
 
-$ORIGIN to.r.
+$ORIGIN t.t.
 $TTL 86400 ;
-@ IN SOA ns hostmaster (
+@ IN SOA r hostmaster (
   1; 
      21600; 
      3600; 
   604800; 
      21600; 
  );
-@      IN      NS       ns
-ns      IN      A        1.2.3.4
+@      IN      NS       r
+r      IN      A        1.2.3.4
+
  #### 
  #### 
+
 $ORIGIN 3.2.in-addr.arpa
 $TTL 86400 ;
-@ IN SOA ns hostmaster (
+@ IN SOA r hostmaster (
    1; 
    21600; 
    3600; 
     604800; 
   21600; 
  );
-@     IN   NS      ns.to.r.
-1      IN      PTR        ns.to.r.
+@     IN   NS      r.t.t.
+1      IN      PTR        r.t.t.
