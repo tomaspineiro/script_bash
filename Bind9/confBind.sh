@@ -23,9 +23,9 @@ ip3=$( echo $ip | cut -d'.' -f 3)
 
 function local () {
    
-    archivo=$ruta'named.conf.local'
+    archivo=$ruta #'named.conf.local'
 
-    echo '' > $archivo
+    
 
     echo 'include "/etc/bind/zones.rfc1918";' >> $archivo
     echo '' >> $archivo
@@ -33,23 +33,21 @@ function local () {
     echo '  type master;' >> $ruta
     echo '  file "db.'$dominio'";' >> $archivo
     echo '};' >> $archivo
-    echo 'zone "'$ip3'.'$ip2'.'$ip1'.in-addr.arpa" {' >> $archivo
+    echo 'zone "'$( echo $ip | cut -d'.' -f 3)'.'$( echo $ip | cut -d'.' -f 2)'.'$( echo $ip | cut -d'.' -f 1)'.in-addr.arpa" {' >> $archivo
     echo '  type master;' >> $archivo
-    echo '  file "db.'$ip1'.'$ip2'.'$ip3'";' >> $archivo
+    echo '  file "db.'$( echo $ip | cut -d'.' -f 1)'.'$( echo $ip | cut -d'.' -f 2)'.'$( echo $ip | cut -d'.' -f 3)'";' >> $archivo
     echo '};' >> $archivo
 
-    sed -i 's/zone "168.192.in-addr.arpa" { type master; file "\/etc\/bind\/db.empty"; };/\/\/\/zone "168.192.in-addr.arpa" { type master; file "\/etc\/bind\/db.empty"; };/' zones.rfc1918
+    #sed -i 's/zone "168.192.in-addr.arpa" { type master; file "\/etc\/bind\/db.empty"; };/\/\/\/zone "168.192.in-addr.arpa" { type master; file "\/etc\/bind\/db.empty"; };/' $ruta'zones.rfc1918'
 
 }
 
 function directo () {
-   
-    echo ' #### ' >> $ruta
 
     echo '$ORIGIN '$dominio'.' >> $ruta
     echo '$TTL 86400 ;' >> $ruta
     echo '@ IN SOA '$nombre' hostmaster (' >> $ruta
-    echo '  1;' \n '    21600;' \n '    3600;' \n ' 604800;' \n '    21600;' \n ');'  >> $ruta
+    echo -e '  1; \n     21600; \n     3600; \n  604800; \n     21600; \n );'  >> $ruta
     echo '@      IN      NS      ' $nombre >> $ruta
     echo  $nombre'      IN      A       ' $ip >> $ruta
 
@@ -57,12 +55,10 @@ function directo () {
 
 function inversa () {
    
-    echo ' #### ' >> $ruta
-
-    echo '$ORIGIN '$ip3'.'$ip2'.'$ip1'.in-addr.arpa' >> $ruta
+    echo '$ORIGIN '$( echo $ip | cut -d'.' -f 3)'.'$( echo $ip | cut -d'.' -f 2)'.in-addr.arpa' >> $ruta
     echo '$TTL 86400 ;' >> $ruta
     echo '@ IN SOA '$nombre' hostmaster (' >> $ruta
-    echo '  1;' \n '    21600;' \n '    3600;' \n ' 604800;' \n '    21600;' \n ');'  >> $ruta
+    echo -e '   1; \n   21600; \n   3600; \n    604800; \n  21600; \n );'  >> $ruta
     echo '@     IN   NS     ' $nombre'.'$dominio'.' >> $ruta
     echo '1      IN      PTR       ' $nombre'.'$dominio'.' >> $ruta
 
@@ -70,14 +66,23 @@ function inversa () {
 
 
 
-ruta=$etc
-local $dominio $ip3 $ip2 $ip1 $ip $nombre $ruta
+ruta='./Bind9/txt.txt'
 
-directo $dominio $ip3 $ip2 $ip1 $ip $nombre $ruta
+echo '' > $ruta
 
-inversa $dominio $ip3 $ip2 $ip1 $ip $nombre $ruta
+local $dominio $ip $nombre $ruta
+
+echo -e  '\n #### ' >> $ruta
+echo -e  ' #### \n' >> $ruta
+
+directo $dominio $ip $nombre $ruta
+
+echo -e  '\n #### ' >> $ruta
+echo -e  ' #### \n' >> $ruta
+
+inversa $dominio $ip $nombre $ruta
 
 
 
-cat $ruta
+
 
