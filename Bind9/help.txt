@@ -7,7 +7,6 @@ INFORMATION:
 
     El objetivo de este software es configuar de manera rapida y sencilla un servidor dns de bind 9.
 
-
 OPCIONES:
 
     -h, --help  aprece esta ayuda. 

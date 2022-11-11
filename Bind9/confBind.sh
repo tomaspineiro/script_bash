@@ -76,16 +76,19 @@ function inversa() {
 #}
 
 #function CNAME_insert() {
-    
+#    read -p 'Nombre del host a redirecionar: ' nombreHost
+#    read -p 'IP del '$nombreHost': ' ip1
 #    archivo=$ruta'db.'$dominio
 #    sed 
 #}
 function A_CNAME() {
 
-    read -p 'IP del apache2: ' ip1
+    read -p 'Nombre del host a redirecionar: ' nombreHost
+    read -p 'IP del '$nombreHost': ' ip1
+    read -p 'SubNombre del dominio del equipo '$nombreHost': ' SubNombre
 
-    echo 'www       IN      CNAME       apache2' >> $ruta'db.'$dominio
-    echo 'apache2   IN      A       '$ip1 >> $ruta'db.'$dominio
+    echo $nombreHost'   IN      A       '$ip1 >> $ruta'db.'$dominio
+    echo $SubNombre'       IN      CNAME      '$nombreHost >> $ruta'db.'$dominio
 
 }
 

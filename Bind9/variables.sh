@@ -2,3 +2,4 @@
 
 $etc = '/etc/bind/'
 $var = '/var/cache/bind/'
+
