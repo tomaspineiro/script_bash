@@ -49,4 +49,4 @@ Este script requiere que el sistema tenga instalados los siguientes paquetes:
 Clone this repository or download the script file.
 
 ```bash
-git clone https://github.com/your_username/alarm-script.git
+git clone https://github.com/tomaspineiro/script_bash/alarma
