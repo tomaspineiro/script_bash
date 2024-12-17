@@ -1,0 +1,115 @@
+Alarm Script Installer
+This script is designed to install the necessary dependencies (such as at and zenity) on a Linux system, allowing you to run an alarm script from any directory. The alarm script shows a popup at the scheduled time to alert you while you work.
+
+Objective of the Script / Objetivo del Script
+ING:
+The purpose of this project is to provide an easy way to create alarms on your Linux system. This script allows you to:
+
+Install the necessary tools (at and zenity).
+Configure the alarm script to be globally accessible from any directory.
+Schedule alerts with popup windows at a specified time.
+ESP:
+El objetivo de este proyecto es proporcionar una forma sencilla de crear alarmas en tu sistema Linux. Este script permite:
+
+Instalar las herramientas necesarias (at y zenity).
+Configurar el script de alarma para que sea accesible desde cualquier directorio del sistema.
+Programar alertas con ventanas emergentes a una hora especificada.
+Requirements / Requisitos
+ING:
+This script requires the following packages to be installed on your system:
+
+at: Allows scheduling commands to run at a future time.
+zenity: Used for creating popup windows from the command line.
+ESP:
+Este script requiere que el sistema tenga instalados los siguientes paquetes:
+
+at: Permite programar la ejecución de comandos en un momento futuro.
+zenity: Utilizado para crear ventanas emergentes (popups) desde la línea de comandos.
+Installation / Instalación
+ING:
+
+Clone this repository or download the script file.
+
+bash
+Copiar código
+git clone https://github.com/your_username/alarm-script.git
+Run the installation script to install the necessary dependencies and make the alarm script globally accessible.
+
+bash
+Copiar código
+cd alarm-script
+sudo ./install.sh
+ESP:
+
+Clona este repositorio o descarga el archivo del script.
+
+bash
+Copiar código
+git clone https://github.com/tu_usuario/alarma-script.git
+Ejecuta el script de instalación para instalar las dependencias necesarias y hacer el script de alarma accesible desde cualquier lugar.
+
+bash
+Copiar código
+cd alarma-script
+sudo ./install.sh
+Usage / Uso
+ING:
+Once the installation script has been executed, you can run the alarm script from any directory with the following command:
+
+bash
+Copiar código
+alarma "Time to take a break!" 15:30
+Where:
+
+"Time to take a break!" is the text message that will appear in the popup window.
+15:30 is the time you want the alarm to trigger (in HH:MM format).
+ESP:
+Después de haber ejecutado el script de instalación, podrás ejecutar el script de alarma desde cualquier directorio utilizando el siguiente comando:
+
+bash
+Copiar código
+alarma "¡Hora de descansar!" 15:30
+Donde:
+
+"¡Hora de descansar!" es el texto del mensaje que aparecerá en la ventana emergente.
+15:30 es la hora en la que quieres que la alarma se active (en formato HH:MM).
+Project Structure / Estructura del Proyecto
+ING:
+
+install.sh: The installation script that installs the dependencies and copies the alarm script to /usr/local/bin/ so it is globally accessible.
+alarma.sh: The script that shows the popup window with the alarm message at the scheduled time.
+ESP:
+
+install.sh: El script de instalación que instala las dependencias y copia el script de alarma a /usr/local/bin/ para que sea accesible desde cualquier ubicación.
+alarma.sh: El script que muestra la ventana emergente (popup) con la alarma en el momento programado.
+Dependencies / Dependencias
+ING:
+This script depends on the following packages:
+
+at: For scheduling tasks.
+zenity: For creating popups.
+ESP:
+Este script depende de los siguientes paquetes:
+
+at: Para programar tareas.
+zenity: Para crear ventanas emergentes.
+Contributions / Contribuciones
+ING:
+If you'd like to contribute to this project, feel free to fork the repository and submit a pull request with your improvements.
+
+ESP:
+Si deseas contribuir a este proyecto, puedes realizar un fork y enviar un pull request con tus mejoras.
+
+License / Licencia
+ING:
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+ESP:
+Este proyecto está bajo la licencia MIT. Puedes ver más detalles en el archivo LICENSE.
+
+Final Notes / Notas Finales
+ING:
+If you encounter any issues with the script or need assistance, feel free to open an issue on the repository.
+
+ESP:
+Si tienes algún problema con el script o necesitas asistencia, no dudes en abrir un issue en el repositorio.
